@@ -116,7 +116,30 @@ Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://
 
 ## GitHub Pages 部署指南
 
-要正确部署到GitHub Pages，请按照以下步骤操作：
+### 简单部署方法（推荐）
+
+我们提供了一个简单的部署脚本，可以自动将构建好的文件复制到docs目录：
+
+```bash
+# 一步完成构建和准备部署文件
+npm run deploy
+```
+
+这个命令会：
+1. 构建项目
+2. 修复资源路径
+3. 将构建文件复制到项目根目录的docs文件夹中
+
+完成后，您只需要：
+1. 提交所有更改到GitHub仓库
+2. 在仓库设置中选择"Pages"选项
+3. 选择部署源为"Deploy from a branch"
+4. 在Branch下拉菜单中选择"main"和"/docs"文件夹
+5. 点击Save保存设置
+
+### 手动部署方法
+
+如果您想手动部署，可以执行以下步骤：
 
 1. 使用专门的构建命令生成优化后的文件：
 
@@ -124,10 +147,7 @@ Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://
 npm run build:github
 ```
 
-这个命令会执行标准构建，并修复资源路径问题，使其在GitHub Pages上正常工作。
-
 2. 将`dist`目录中的所有文件上传到您的GitHub仓库。您可以：
-
    - 直接将文件推送到您的`gh-pages`分支
    - 或者在仓库设置中选择主分支下的`/docs`目录作为GitHub Pages源（需要先将`dist`目录重命名为`docs`）
 
@@ -135,11 +155,13 @@ npm run build:github
 
 ### 常见问题解决
 
-如果部署后页面显示为空白，请检查：
+如果部署后页面显示为空白或资源无法加载，请检查：
 
 1. 浏览器控制台中的错误信息
-2. 资源路径是否正确（应使用相对路径而非绝对路径）
-3. GitHub Pages是否已正确配置
+2. 确保您使用了`npm run build:github`或`npm run deploy`命令而不是普通的`npm run build`
+3. 确保GitHub Pages设置正确（在仓库设置中可以看到实际的部署URL）
+4. 清除浏览器缓存后重试
+5. 检查网络请求路径是否正确（应该是相对路径或与base配置匹配的路径）
 
 ## 许可证
 

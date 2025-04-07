@@ -113,3 +113,34 @@
 This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
 Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+
+## GitHub Pages 部署指南
+
+要正确部署到GitHub Pages，请按照以下步骤操作：
+
+1. 使用专门的构建命令生成优化后的文件：
+
+```bash
+npm run build:github
+```
+
+这个命令会执行标准构建，并修复资源路径问题，使其在GitHub Pages上正常工作。
+
+2. 将`dist`目录中的所有文件上传到您的GitHub仓库。您可以：
+
+   - 直接将文件推送到您的`gh-pages`分支
+   - 或者在仓库设置中选择主分支下的`/docs`目录作为GitHub Pages源（需要先将`dist`目录重命名为`docs`）
+
+3. 确保在GitHub仓库设置中启用了GitHub Pages功能。
+
+### 常见问题解决
+
+如果部署后页面显示为空白，请检查：
+
+1. 浏览器控制台中的错误信息
+2. 资源路径是否正确（应使用相对路径而非绝对路径）
+3. GitHub Pages是否已正确配置
+
+## 许可证
+
+MIT

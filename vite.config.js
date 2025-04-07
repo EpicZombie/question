@@ -7,5 +7,5 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // 允许从公网访问
   },
-  publicPath: '/question/',
+  base: '/question-accordion-app/',
 })
